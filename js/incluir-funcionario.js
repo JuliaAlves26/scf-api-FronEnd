@@ -45,8 +45,8 @@ $('#form-inserir-funcionario').submit(function (event) {
     var cargosPorDepartamento = {
         "1": ["Engenheiro(a) de Software", "Engenheiro(a) de Dados", "UX Designer", "Estagiário(a)"],
         "2": ["Advogado(a)", "Estagiário(a)"],
-        "3": ["Analista", "Diretor(a)", "Estagiário(a)"],
-        "4": ["Analista de DP", "Diretor(a)", "Estagiário(a)"],
+        "3": ["Analista", "Estagiário(a)"],
+        "4": ["Recruiter", "Diretor(a)", "Estagiário(a)"],
         "5": ["Contador(a)", "Economista", "Estagiário(a)"]
     };
 
