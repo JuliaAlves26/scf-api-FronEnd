@@ -39,3 +39,31 @@ $('#form-inserir-funcionario').submit(function (event) {
         }
     });
  });
+
+ $(document).ready(function() {
+    // Mapeamento dos cargos por departamento
+    var cargosPorDepartamento = {
+        "1": ["Engenheiro(a) de Software", "Engenheiro(a) de Dados", "UX Designer", "Estagiário(a)"],
+        "2": ["Advogado(a)", "Estagiário(a)"],
+        "3": ["Analista", "Diretor(a)", "Estagiário(a)"],
+        "4": ["Analista de DP", "Diretor(a)", "Estagiário(a)"],
+        "5": ["Contador(a)", "Economista", "Estagiário(a)"]
+    };
+
+    // Evento de mudança do campo "Departamento"
+    $('#select-departamento').change(function() {
+        var departamentoSelecionado = $(this).val();
+        var selectCargo = $('#select-cargo');
+
+        // Limpar as opções existentes
+        selectCargo.empty();
+
+        // Adicionar as opções de cargo do departamento selecionado
+        var cargos = cargosPorDepartamento[departamentoSelecionado];
+        if (cargos) {
+            cargos.forEach(function(cargo) {
+                selectCargo.append($('<option>').val(cargo).text(cargo));
+            });
+        }
+    });
+});
