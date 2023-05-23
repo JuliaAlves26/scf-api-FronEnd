@@ -20,21 +20,22 @@ $('#form-inserir-funcionario').submit(function (event) {
 
     console.log(JSON.stringify(formData));
 
-    // $.ajax({
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //     },
-    //     type: 'POST',
-    //     url: 'http://localhost:8080/api/funcionario/create',
-    //     data: JSON.stringify(formData),
-    //     dataType: 'json',
-    //     success: function (data) {
-    //         location.href = 'listar-funcionarios.html';
-    //     },
-    //     error: function (data) {
-    //         $('#div-alert-message').prepend(data.responseText);
-    //         $('#div-alert-message').fadeIn();
-    //     }
-    // });
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        type: 'POST',
+        url: 'http://localhost:8080/api/funcionario/create',
+        data: JSON.stringify(formData),
+        dataType: 'json',
+        success: function (data) {
+            //console.log(data);
+            location.href = 'listar-funcionarios.html';
+        },
+        error: function (data) {
+            $('#div-alert-message').prepend(data.responseText);
+            $('#div-alert-message').fadeIn();
+        }
+    });
  });
