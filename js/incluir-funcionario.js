@@ -9,10 +9,10 @@ $('#form-inserir-funcionario').submit(function (event) {
     var formData = {
         'matricula': $('#input-matricula').val(),
         'nome': $('#input-nome').val(),
-        'sexo': $('#input-sexo').val(),
+        'sexo': $('#select-sexo').val(),
         'cpf': $('#input-cpf').val(),
-        'departamento': $('#input-departamento').val(),
-        'cargo': $('#input-cargo').val(),
+        'departamento': $('#select-departamento').val(),
+        'cargo': $('#select-cargo').val(),
         'salario': $('#input-salario').val(),
         'nascimento': nascimento.toISOString(),
         'dataHoraCadastro': new Date().toISOString()
@@ -41,24 +41,20 @@ $('#form-inserir-funcionario').submit(function (event) {
  });
 
  $(document).ready(function() {
-    // Mapeamento dos cargos por departamento
     var cargosPorDepartamento = {
-        "1": ["Engenheiro(a) de Software", "Engenheiro(a) de Dados", "UX Designer", "Estagiário(a)"],
-        "2": ["Advogado(a)", "Estagiário(a)"],
-        "3": ["Analista", "Estagiário(a)"],
-        "4": ["Recruiter", "Diretor(a)", "Estagiário(a)"],
-        "5": ["Contador(a)", "Economista", "Estagiário(a)"]
+        "TI": ["Engenheiro(a) de Software", "Engenheiro(a) de Dados", "UX Designer", "Estagiário(a)"],
+        "Jurídico": ["Advogado(a)", "Estagiário(a)"],
+        "Marketing": ["Analista", "Estagiário(a)"],
+        "RH": ["Recruiter", "Diretor(a)", "Estagiário(a)"],
+        "Financeiro": ["Contador(a)", "Economista", "Estagiário(a)"]
     };
 
-    // Evento de mudança do campo "Departamento"
     $('#select-departamento').change(function() {
         var departamentoSelecionado = $(this).val();
         var selectCargo = $('#select-cargo');
 
-        // Limpar as opções existentes
         selectCargo.empty();
 
-        // Adicionar as opções de cargo do departamento selecionado
         var cargos = cargosPorDepartamento[departamentoSelecionado];
         if (cargos) {
             cargos.forEach(function(cargo) {

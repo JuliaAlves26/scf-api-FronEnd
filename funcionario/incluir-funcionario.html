@@ -1,134 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incluir Funcionário</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Incluir Funcionário</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-</head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+            integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="http://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    </head>
 
-<body>
+    <body>
 
-    <!-- Menu topo -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="../index.html">Sistema de Cadastro de Funcionário</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="listar-funcionarios.html">Funcionário<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" onclick="sair()">Sair</button>
+        <!-- Menu topo -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="../index.html">Sistema de Cadastro de Funcionários</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="listar-funcionarios.html">Lista de Funcionários<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="button" onclick="sair()">Sair</button>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h2>Inserir Funcionário</h2>
+        
+            <div class="alert alert-danger collapse" role="alert" id="div-alert-message">
+                <a class="close" onclick="esconderAlert()">×</a>
+            </div>
+        
+            <form id="form-inserir-funcionario">
+        
+                <div class="form-group">
+                    <label for="input-matricula">Matrícula</label>
+                    <input type="text" class="form-control" id="input-matricula" placeholder="Matrícula" maxlength="8" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="input-nome">Nome</label>
+                    <input type="text" class="form-control" id="input-nome" placeholder="Nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="select-sexo">Gênero</label>
+                    <select class="form-control" id="select-sexo">
+                        <option value="">Selecione o gênero</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="input-nascimento">Data de Nascimento</label>
+                    <input class="form-control" type="date" id="input-nascimento">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-cpf">CPF</label>
+                    <input class="form-control" type="text" id="input-cpf" maxlength="11">
+                </div>
+
+                <div class="form-group">
+                    <label for="select-departamento">Departamento</label>
+                    <select class="form-control" id="select-departamento" placeholder="Departamento">
+                        <option value="">Selecione um departamento</option>
+                        <option value="TI">TI</option>
+                        <option value="Jurídico">Jurídico</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="RH">RH</option>
+                        <option value="Financeiro">Financeiro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="select-cargo">Cargo</label>
+                    <select class="form-control" id="select-cargo" placeholder="Cargo">
+                        <option value="">Selecione um cargo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-salario">Salário</label>
+                    <input class="form-control" type="double" id="input-salario" placeholder="Salario">
+                </div>
+        
+                <hr>
+                <a class="btn btn-secondary" href="listar-funcionarios.html" role="button">Voltar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+        
+            </form>
+        
         </div>
-    </nav>
 
-
-
-    <div class="container">
-        <h2>Inserir Funcionário</h2>
-    
-        <div class="alert alert-danger collapse" role="alert" id="div-alert-message">
-            <a class="close" onclick="esconderAlert()">×</a>
-        </div>
-    
-        <form id="form-inserir-funcionario">
-    
-            <div class="form-group">
-                <label for="input-matricula">Matrícula</label>
-                <input type="text" class="form-control" id="input-matricula" placeholder="Matrícula" maxlength="8">
-            </div>
-    
-            <div class="form-group">
-                <label for="input-nome">Nome</label>
-                <input type="text" class="form-control" id="input-nome" placeholder="Nome">
-            </div>
-
-            <div class="form-group">
-                <label for="select-sexo">Gênero</label>
-                <select class="form-control" id="select-sexo">
-                    <option value="">Selecione o gênero</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="feminino">Feminino</option>
-                    <option value="outro">Outro</option>
-                </select>
-            </div>
-
-            <!-- <div class="form-group">
-                <label for="input-nome">Sexo</label>
-                <input type="text" class="form-control" id="input-sexo" placeholder="Sexo">
-            </div> -->
-    
-            <div class="form-group">
-                <label for="input-nascimento">Data de Nascimento</label>
-                <input class="form-control" type="date" id="input-nascimento">
-            </div>
-
-            <div class="form-group">
-                <label for="input-cpf">CPF</label>
-                <input class="form-control" type="text" id="input-cpf" maxlength="11">
-            </div>
-
-            <!-- <div class="form-group">
-                <label for="input-departamento">Departamento</label>
-                <input class="form-control" type="text" id="input-departamento" placeholder="Departamento">
-            </div> -->
-
-            <div class="form-group">
-                <label for="select-departamento">Departamento</label>
-                <select class="form-control" id="select-departamento" placeholder="Departamento">
-                    <option value="">Selecione um departamento</option>
-                    <option value="1">TI</option>
-                    <option value="2">Jurídico</option>
-                    <option value="3">Marketing</option>
-                    <option value="4">RH</option>
-                    <option value="5">Financeiro</option>
-                </select>
-            </div>
-
-            <!-- <div class="form-group">
-                <label for="input-cargo">Cargo</label>
-                <input class="form-control" type="text" id="input-cargo" placeholder="Cargo">
-            </div> -->
-
-            <div class="form-group">
-                <label for="select-cargo">Cargo</label>
-                <select class="form-control" id="select-cargo" placeholder="Cargo">
-                    <option value="">Selecione um cargo</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="input-salario">Salario</label>
-                <input class="form-control" type="double" id="input-salario" placeholder="Salario">
-            </div>
-    
-            <hr>
-            <a class="btn btn-secondary" href="listar-funcionarios.html" role="button">Voltar</a>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-    
-        </form>
-    
-    </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
-    <script src="http://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../js/incluir-funcionario.js"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
+        <script src="http://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../js/incluir-funcionario.js"></script>
+    </body>
 
 </html>
