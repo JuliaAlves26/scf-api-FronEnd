@@ -20,15 +20,6 @@ $('#form-editar-funcionario').submit(function (event) {
 
     nascimento = new Date($('#input-nascimento').val());
 
-    //Criar formData
-    // var formData = {
-    //     'id': id_funcionario,
-    //     'matricula': $('#input-matricula').val(),
-    //     'nome': $('#input-nome').val(),
-    //     'nascimento': nascimento.toISOString(),
-    //     'dataHoraCadastro': new Date().toISOString()
-    // };
-
     var formData = {
         'id': $('#input-id').val(),
         'matricula': $('#input-matricula').val(),
