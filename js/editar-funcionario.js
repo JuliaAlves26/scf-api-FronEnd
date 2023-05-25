@@ -21,10 +21,23 @@ $('#form-editar-funcionario').submit(function (event) {
     nascimento = new Date($('#input-nascimento').val());
 
     //Criar formData
+    // var formData = {
+    //     'id': id_funcionario,
+    //     'matricula': $('#input-matricula').val(),
+    //     'nome': $('#input-nome').val(),
+    //     'nascimento': nascimento.toISOString(),
+    //     'dataHoraCadastro': new Date().toISOString()
+    // };
+
     var formData = {
-        'id': id_funcionario,
+        'id': $('#input-id').val(),
         'matricula': $('#input-matricula').val(),
         'nome': $('#input-nome').val(),
+        'sexo': $('#select-sexo').val(),
+        'cpf': $('#input-cpf').val(),
+        'departamento': $('#select-departamento').val(),
+        'cargo': $('#select-cargo').val(),
+        'salario': $('#input-salario').val(),
         'nascimento': nascimento.toISOString(),
         'dataHoraCadastro': new Date().toISOString()
     };
@@ -69,6 +82,30 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
+$(document).ready(function() {
+    var cargosPorDepartamento = {
+        "TI": ["Engenheiro(a) de Software", "Engenheiro(a) de Dados", "UX Designer", "Estagiário(a)"],
+        "Jurídico": ["Advogado(a)", "Estagiário(a)"],
+        "Marketing": ["Analista", "Estagiário(a)"],
+        "RH": ["Recruiter", "Diretor(a)", "Estagiário(a)"],
+        "Financeiro": ["Contador(a)", "Economista", "Estagiário(a)"]
+    };
+
+    $('#select-departamento').change(function() {
+        var departamentoSelecionado = $(this).val();
+        var selectCargo = $('#select-cargo');
+
+        selectCargo.empty();
+
+        var cargos = cargosPorDepartamento[departamentoSelecionado];
+        if (cargos) {
+            cargos.forEach(function(cargo) {
+                selectCargo.append($('<option>').val(cargo).text(cargo));
+            });
+        }
+    });
+});
+
 
 $(document).ready(function () {
     $.ajax({
@@ -76,9 +113,15 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            $("#input-nome").val(data.nome);
             $("#input-matricula").val(data.matricula);
+            $("#input-nome").val(data.nome);
+            $("#select-sexo").val(data.sexo);
+            $("#input-cpf").val(data.cpf);
+            $("#select-departamento").val(data.departamento);
+            $('#select-cargo').val(data.cargo);
+            $('#input-salario').val(data.salario);
             $("#input-nascimento").val(formatDate(new Date(data.nascimento)));
+           
         }
     })
 

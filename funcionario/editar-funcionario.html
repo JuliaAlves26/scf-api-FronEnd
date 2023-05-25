@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="listarFuncionario.html">Funcionario <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="listarFuncionario.html">Listar Funcionários <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <button class="btn btn-outline-danger my-2 my-sm-0" type="button" onclick="sair()">Sair</button>
@@ -46,52 +46,69 @@
         </div>
     
         <form id="form-editar-funcionario" action="listar-funcionario.html">
+
+            <div class="form-group">
+                <label for="input-matricula">ID</label>
+                <input type="long" class="form-control" id="input-id" placeholder="ID" required>
+            </div>
     
             <div class="form-group">
                 <label for="input-matricula">Matrícula</label>
-                <input type="text" class="form-control" id="input-matricula" placeholder="Matrícula" maxlength="8">
+                <input type="text" class="form-control" id="input-matricula" placeholder="Matrícula" maxlength="8" required>
             </div>
     
             <div class="form-group">
                 <label for="input-nome">Nome</label>
-                <input type="text" class="form-control" id="input-nome" placeholder="Nome">
-            </div>
-    
-            <div class="form-group">
-                <label for="input-nascimento">Nascimento</label>
-                <input class="form-control" type="date" id="input-nascimento">
+                <input type="text" class="form-control" id="input-nome" placeholder="Nome" required>
             </div>
 
             <div class="form-group">
-                <label for="input-sexo">Sexo</label>
-                <input class="form-control" type="text" id="input-sexo">
+                <label for="select-sexo">Gênero</label>
+                <select class="form-control" id="select-sexo" required>
+                    <option value="">Selecione o gênero</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="input-nascimento">Data de Nascimento</label>
+                <input class="form-control" type="date" id="input-nascimento" required>
             </div>
 
             <div class="form-group">
                 <label for="input-cpf">CPF</label>
-                <input class="form-control" type="text" id="input-cpf" maxlength="11">
+                <input class="form-control" type="text" id="input-cpf" maxlength="11" required>
             </div>
 
             <div class="form-group">
-                <label for="input-departamento">Departamento</label>
-                <input class="form-control" type="text" id="input-departamento" placeholder="Departamento">
+                <label for="select-departamento">Departamento</label>
+                <select class="form-control" id="select-departamento" placeholder="Departamento" required>
+                    <option value="">Selecione um departamento</option>
+                    <option value="TI">TI</option>
+                    <option value="Jurídico">Jurídico</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="RH">RH</option>
+                    <option value="Financeiro">Financeiro</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="input-cargo">Cargo</label>
-                <input class="form-control" type="text" id="input-cargo" placeholder="Cargo">
+                <label for="select-cargo">Cargo</label>
+                <select class="form-control" id="select-cargo" placeholder="Cargo" required>
+                    <option value="">Selecione um cargo</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="input-salario">Salario</label>
-                <input class="form-control" type="double" id="input-salario" placeholder="Salario">
+                <label for="input-salario">Salário</label>
+                <input class="form-control" type="double" id="input-salario" placeholder="Salario" required>
             </div>
     
             <hr>
             <a class="btn btn-secondary" href="listar-funcionarios.html" role="button">Voltar</a>
             <button type="submit" class="btn btn-primary">Salvar</button>
-    
-        </form>
     
     </div>
 
