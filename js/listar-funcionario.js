@@ -17,7 +17,7 @@ function listarFuncionarios() {
                 html += `<td>` + data.departamento + `</td>`;
                 html += `<td>` + data.cargo + `</td>`;
                 html += `<td>` + data.salario + `</td>`;
-                html += `<td>` + data.nascimento + `</td>`;
+                html += `<td>` + formatDate(new Date(data.nascimento)) + `</td>`;
                 html += `<td>` + data.dataHoraCadastro + `</td>`;
                 html += `<td><a href="editar-funcionario.html?id=` + data.id + `"><i class="bi bi-pencil-fill"></i></a>`;
                 html += ` <a href="visualizar-funcionario.html?id=` + data.id + `"><i class="bi bi-search"></i></a>`;
@@ -46,4 +46,18 @@ function removerFuncionario(id) {
             }
         });
     }
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getUTCMonth() + 1),
+        day = '' + d.getUTCDate(),
+        year = d.getUTCFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
 }
