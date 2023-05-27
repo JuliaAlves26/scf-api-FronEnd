@@ -60,11 +60,15 @@
         <form id="form-editar-funcionario" action="listar-funcionarios.html">
 
             <div class="form-group">
-                <label for="input-id">ID do Funcionário</label>
-                <input type="text" class="form-control" id="input-id" placeholder="Digite o ID do funcionário">
+                <label for="input-id">Digite o ID do funcionário a ser visualizado:</label>
+                <input type="text" class="form-control" id="input-id" placeholder="ID" required>
             </div>  
-            
-            <button type="button" class="btn btn-primary" onclick="visualizarFuncionario()">Visualizar</button>
+
+            <div>
+                <button type="button" class="btn btn-primary" onclick="visualizarFuncionario()">Visualizar</button>
+                <hr>
+                </hr>
+            </div>
     
             <div class="form-group">
                 <label for="input-matricula">Matrícula</label>
@@ -78,35 +82,35 @@
     
             <div class="form-group">
                 <label for="input-sexo">Gênero</label>
-                <input class="form-control" id="input-sexo" required>
+                <input class="form-control" type="text" id="input-sexo" disabled>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="input-nascimento">Data de Nascimento</label>
-                <input class="form-control" type="date" id="input-nascimento" required>
+                <input class="form-control" type="date" id="input-nascimento" disabled>
             </div>
 
             <div class="form-group">
                 <label for="input-cpf">CPF</label>
-                <input class="form-control" type="text" id="input-cpf" maxlength="11" required>
+                <input class="form-control" type="text" id="input-cpf" maxlength="11" disabled>
             </div>
 
             <div class="form-group">
                 <label for="select-departamento">Departamento</label>
-                <input class="form-control" id="input-departamento" placeholder="Departamento" required>
+                <input class="form-control" type="text" id="input-departamento" placeholder="Departamento" disabled>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="select-cargo">Cargo</label>
-                <input class="form-control" id="input-cargo" placeholder="Cargo" required>
+                <input class="form-control" type="text" id="input-cargo" placeholder="Cargo" disabled>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="input-salario">Salário</label>
-                <input class="form-control" type="double" id="input-salario" placeholder="Salario" required>
+                <input class="form-control" type="double" id="input-salario" placeholder="Salario" disabled>
             </div>
     
             <hr>

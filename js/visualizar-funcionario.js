@@ -44,20 +44,41 @@ function visualizarFuncionario() {
             $("#input-departamento").val(data.departamento);
             $("#input-cargo").val(data.cargo);
             $("#input-salario").val(data.salario);
-        },
-        error: function (error) {
-            $('#div-alert-message').text('Erro ao obter os dados do funcionário').addClass('show');
         }
+        // error: function (error) {
+        //     $('#div-alert-message').text('Erro ao obter os dados do funcionário').addClass('show');
+        // }
     });
 }
+
+// $(document).ready(function () {
+//     var id_funcionario = GetURLParameter("id");
+
+//     if (id_funcionario !== null && id_funcionario !== undefined && id_funcionario !== '') {
+//         $('#input-id').val(id_funcionario);
+//         visualizarFuncionario();
+//     } else {
+//         $('#div-alert-message').text('ID do funcionário inválido').addClass('show');
+//     }
+// });
 
 $(document).ready(function () {
     var id_funcionario = GetURLParameter("id");
 
-    if (id_funcionario !== null && id_funcionario !== undefined && id_funcionario !== '') {
-        $('#input-id').val(id_funcionario);
-        visualizarFuncionario();
-    } else {
-        $('#div-alert-message').text('ID do funcionário inválido').addClass('show');
-    }
+    $('#input-id').val(id_funcionario);
+    visualizarFuncionario();
+   
 });
+
+// $(document).ready(function () {
+//     var id_funcionario = GetURLParameter("id");
+
+//     if (id_funcionario) {
+//         $('#input-id').val(id_funcionario);
+//         visualizarFuncionario();
+//     } else {
+//         if (id_funcionario !== null && id_funcionario !== undefined && id_funcionario !== '') {
+//         $('#div-alert-message').text('ID do funcionário inválido').addClass('show');
+//         }
+//     }
+// });
