@@ -1,27 +1,67 @@
 function GetURLParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++)
-    {
+    for (var i = 0; i < sURLVariables.length; i++) {
         var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam)
-        {
+        if (sParameterName[0] == sParam) {
             return sParameterName[1];
         }
     }
 }
 
-var id_funcionario = GetURLParameter("id");
+function visualizarFuncionario() {
+    var id = $('#input-id').val();
 
-//Processar formulário
+    if (id === '') {
+        alert('Por favor, preencha o campo ID');
+        return;
+    }
+
+    $.ajax({
+        url: 'http://localhost:8080/api/funcionario/getById/' + id,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            preencherCamposFuncionario(data);
+        },
+        error: function (xhr, status, error) {
+            alert('Erro ao buscar funcionário ' + error);
+        }
+    });
+}
+
+
+function preencherCamposFuncionario(data) {
+    $("#input-matricula").val(data.matricula);
+    $("#input-nome").val(data.nome);
+    $("#select-sexo").val(data.sexo);
+    $("#input-cpf").val(data.cpf);
+    $("#select-departamento").val(data.departamento);
+    $("#select-cargo").val(data.cargo);
+    $("#input-salario").val(data.salario);
+    $("#input-nascimento").val(formatDate(data.nascimento));
+}
+
+$(document).ready(function () {
+    var id_funcionario = GetURLParameter("id");
+
+    if (id_funcionario) {
+        $('#input-id').val(id_funcionario);
+        visualizarFuncionario();
+    }
+});
+
 $('#form-editar-funcionario').submit(function (event) {
-
     event.preventDefault();
 
-    nascimento = new Date($('#input-nascimento').val());
+    var id = $('#input-id').val();
+    if (!id) {
+        alert('Por favor, preencha o campo ID');
+        return;
+    }
 
     var formData = {
-        'id': $('#input-id').val(),
+        'id': id,
         'matricula': $('#input-matricula').val(),
         'nome': $('#input-nome').val(),
         'sexo': $('#select-sexo').val(),
@@ -29,7 +69,7 @@ $('#form-editar-funcionario').submit(function (event) {
         'departamento': $('#select-departamento').val(),
         'cargo': $('#select-cargo').val(),
         'salario': $('#input-salario').val(),
-        'nascimento': nascimento.toISOString(),
+        'nascimento': $('#input-nascimento').val(),
         'dataHoraCadastro': new Date().toISOString()
     };
 
@@ -47,17 +87,11 @@ $('#form-editar-funcionario').submit(function (event) {
         success: function (data) {
             location.href = 'listar-funcionarios.html';
         },
-        error: function (data) {
-            $('#div-alert-message').prepend(data.responseText);
-            $('#div-alert-message').fadeIn();
+        error: function (xhr, status, error) {
+            alert('Erro ao editar funcionário: ' + error);
         }
     });
- });
-
- function esconderAlert() {
-    $('#div-alert-message').html("<a class='close' onclick='esconderAlert()'>×</a>");
-    $('#div-alert-message').hide();
-}
+});
 
 function formatDate(date) {
     var d = new Date(date),
@@ -73,7 +107,7 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     var cargosPorDepartamento = {
         "TI": ["Engenheiro(a) de Software", "Engenheiro(a) de Dados", "UX Designer", "Estagiário(a)"],
         "Jurídico": ["Advogado(a)", "Estagiário(a)"],
@@ -82,7 +116,7 @@ $(document).ready(function() {
         "Financeiro": ["Contador(a)", "Economista", "Estagiário(a)"]
     };
 
-    $('#select-departamento').change(function() {
+    $('#select-departamento').change(function () {
         var departamentoSelecionado = $(this).val();
         var selectCargo = $('#select-cargo');
 
@@ -90,30 +124,9 @@ $(document).ready(function() {
 
         var cargos = cargosPorDepartamento[departamentoSelecionado];
         if (cargos) {
-            cargos.forEach(function(cargo) {
+            cargos.forEach(function (cargo) {
                 selectCargo.append($('<option>').val(cargo).text(cargo));
             });
         }
     });
-});
-
-
-$(document).ready(function () {
-    $.ajax({
-        url: 'http://localhost:8080/api/funcionario/getById/' + id_funcionario,
-        type: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            $("#input-matricula").val(data.matricula);
-            $("#input-nome").val(data.nome);
-            $("#select-sexo").val(data.sexo);
-            $("#input-cpf").val(data.cpf);
-            $("#select-departamento").val(data.departamento);
-            $('#select-cargo').val(data.cargo);
-            $('#input-salario').val(data.salario);
-            $("#input-nascimento").val(formatDate(new Date(data.nascimento)));
-           
-        }
-    })
-
 });
