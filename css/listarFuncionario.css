@@ -1,0 +1,173 @@
+/* Estilo para o cabeçalho */
+.custom-header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .link-body-emphasis {
+    font-weight: bold;
+  }
+  
+  .nav-link {
+    color: #000;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  /* Estilo para o conteúdo principal */
+  .container {
+    margin-top: 30px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f8f9fa;
+  }
+  
+  .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+  }
+  
+  .table .table {
+    background-color: #fff;
+  }
+  
+  .table-bordered {
+    border: 1px solid #dee2e6;
+  }
+  
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+  
+  .table-bordered thead th,
+  .table-bordered thead td {
+    border-bottom-width: 2px;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+  
+  /* Ajuste para o DataTables */
+  .dataTables_wrapper {
+    margin-top: 1em;
+  }
+  
+  /* Ajuste para os botões do DataTables */
+  .dataTables_wrapper .dt-buttons {
+    margin-bottom: 1em;
+  }
+  
+  /* Estilo personalizado para a tabela */
+  .table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-custom thead th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .table-custom tbody td {
+    padding: 12px;
+  }
+  
+  .table-custom tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .table-custom tbody tr:last-of-type {
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .table-custom tbody td:last-of-type {
+    text-align: center;
+  }
+  
+  .table-custom tbody td.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .table-custom .btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .text-center {
+    text-align: center;
+    margin-top: 40px; 
+    margin-bottom: 40px; 
+  }
+  
+  
