@@ -9,8 +9,6 @@ function GetURLParameter(sParam) {
     }
 }
 
-var id_funcionario = GetURLParameter("id");
-
 function esconderAlert() {
     $('#div-alert-message').html("<a class='close' onclick='esconderAlert()'>×</a>");
     $('#div-alert-message').hide();
@@ -30,17 +28,36 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
+function visualizarFuncionario() {
+    var id = $('#input-id').val(); 
 
-$(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8080/api/funcionario/getById/' + id_funcionario,
+        url: 'http://localhost:8080/api/funcionario/getById/' + id,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            $("#input-nome").val(data.nome);
             $("#input-matricula").val(data.matricula);
+            $("#input-nome").val(data.nome);
+            $("#input-sexo").val(data.sexo);
             $("#input-nascimento").val(formatDate(new Date(data.nascimento)));
+            $("#input-cpf").val(data.cpf);
+            $("#input-departamento").val(data.departamento);
+            $("#input-cargo").val(data.cargo);
+            $("#input-salario").val(data.salario);
+        },
+        error: function (error) {
+            $('#div-alert-message').text('Erro ao obter os dados do funcionário').addClass('show');
         }
-    })
+    });
+}
 
+$(document).ready(function () {
+    var id_funcionario = GetURLParameter("id");
+
+    if (id_funcionario !== null && id_funcionario !== undefined && id_funcionario !== '') {
+        $('#input-id').val(id_funcionario);
+        visualizarFuncionario();
+    } else {
+        $('#div-alert-message').text('ID do funcionário inválido').addClass('show');
+    }
 });

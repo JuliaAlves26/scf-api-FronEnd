@@ -58,6 +58,13 @@
         </div>
     
         <form id="form-editar-funcionario" action="listar-funcionarios.html">
+
+            <div class="form-group">
+                <label for="input-id">ID do Funcionário</label>
+                <input type="text" class="form-control" id="input-id" placeholder="Digite o ID do funcionário">
+            </div>  
+            
+            <button type="button" class="btn btn-primary" onclick="visualizarFuncionario()">Visualizar</button>
     
             <div class="form-group">
                 <label for="input-matricula">Matrícula</label>
@@ -70,12 +77,8 @@
             </div>
     
             <div class="form-group">
-                <label for="select-sexo">Gênero</label>
-                <select class="form-control" id="select-sexo" required>
-                    <option value="">Selecione o gênero</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="feminino">Feminino</option>
-                    <option value="outro">Outro</option>
+                <label for="input-sexo">Gênero</label>
+                <input class="form-control" id="input-sexo" required>
                 </select>
             </div>
 
@@ -91,20 +94,13 @@
 
             <div class="form-group">
                 <label for="select-departamento">Departamento</label>
-                <select class="form-control" id="select-departamento" placeholder="Departamento" required>
-                    <option value="">Selecione um departamento</option>
-                    <option value="TI">TI</option>
-                    <option value="Jurídico">Jurídico</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="RH">RH</option>
-                    <option value="Financeiro">Financeiro</option>
+                <input class="form-control" id="input-departamento" placeholder="Departamento" required>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="select-cargo">Cargo</label>
-                <select class="form-control" id="select-cargo" placeholder="Cargo" required>
-                    <option value="">Selecione um cargo</option>
+                <input class="form-control" id="input-cargo" placeholder="Cargo" required>
                 </select>
             </div>
 
