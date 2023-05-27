@@ -24,10 +24,18 @@ function visualizarFuncionario() {
         success: function (data) {
             preencherCamposFuncionario(data);
         },
-        error: function (xhr, status, error) {
-            alert('Erro ao buscar funcionário ' + error);
+        error: function (data) {
+            $('#div-alert-message').prepend(data.responseText);
+            $('#div-alert-message').fadeIn();
+   
         }
     });
+}
+
+function esconderAlert(event) {
+    event.stopPropagation();
+    $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
+    $('#div-alert-message').hide();
 }
 
 

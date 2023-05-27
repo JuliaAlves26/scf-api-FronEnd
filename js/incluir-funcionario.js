@@ -40,6 +40,12 @@ $('#form-inserir-funcionario').submit(function (event) {
     });
  });
 
+ function esconderAlert(event) {
+    event.stopPropagation();
+    $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
+    $('#div-alert-message').hide();
+}
+
  $(document).ready(function() {
     var cargosPorDepartamento = {
         "TI": ["Engenheiro(a) de Software", "Engenheiro(a) de Dados", "UX Designer", "Estagiário(a)"],
