@@ -34,7 +34,7 @@ $('#form-inserir-funcionario').submit(function (event) {
             location.href = 'listar-funcionarios.html';
         },
         error: function (data) {
-            $('#div-alert-message').prepend(data.responseText);
+            $('#div-alert-message').html(data.responseText);
             $('#div-alert-message').fadeIn();
         }
     });

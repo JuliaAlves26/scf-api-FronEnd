@@ -40,11 +40,15 @@ function esconderAlert(event) {
 
 
 function preencherCamposFuncionario(data) {
+
+    console.log(data);
+    
     $("#input-matricula").val(data.matricula);
     $("#input-nome").val(data.nome);
     $("#select-sexo").val(data.sexo);
     $("#input-cpf").val(data.cpf);
     $("#select-departamento").val(data.departamento);
+    $("#select-departamento").change();
     $("#select-cargo").val(data.cargo);
     $("#input-salario").val(data.salario);
     $("#input-nascimento").val(formatDate(data.nascimento));
