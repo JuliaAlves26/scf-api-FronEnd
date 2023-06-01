@@ -57,11 +57,11 @@ function visualizarFuncionario() {
     });
 }
 
-function esconderAlert(event) {
-    event.stopPropagation();
-    $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
-    $('#div-alert-message').hide();
-}
+// function esconderAlert(event) {
+//     event.stopPropagation();
+//     $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
+//     $('#div-alert-message').hide();
+// }
 
 $(document).ready(function () {
     var id_funcionario = GetURLParameter("id");

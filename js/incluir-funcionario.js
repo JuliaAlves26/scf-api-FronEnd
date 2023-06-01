@@ -1,4 +1,10 @@
 //Processar formulário
+
+function esconderAlert() {
+    $('#div-alert-message').html("<a class='close' onclick='esconderAlert()'>×</a>");
+    $('#div-alert-message').hide();
+}
+
 $('#form-inserir-funcionario').submit(function (event) {
 
     event.preventDefault();
@@ -34,17 +40,19 @@ $('#form-inserir-funcionario').submit(function (event) {
             location.href = 'listar-funcionarios.html';
         },
         error: function (data) {
-            $('#div-alert-message').html(data.responseText);
+            // $('#div-alert-message').prepend(data.responseText);
+            $('#div-alert-message').html(data.responseText+'<a class="close" onclick="esconderAlert(event)">×</a>');
             $('#div-alert-message').fadeIn();
         }
     });
  });
 
- function esconderAlert(event) {
-    event.stopPropagation();
-    $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
-    $('#div-alert-message').hide();
-}
+//  function esconderAlert(event) {
+//     event.stopPropagation();
+//     $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
+//     $('#div-alert-message').hide();
+// }
+
 
  $(document).ready(function() {
     var cargosPorDepartamento = {

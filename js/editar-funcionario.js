@@ -25,7 +25,7 @@ function visualizarFuncionario() {
             preencherCamposFuncionario(data);
         },
         error: function (data) {
-            $('#div-alert-message').html(data.responseText);
+            $('#div-alert-message').html(data.responseText+'<a class="close" onclick="esconderAlert(event)">×</a>');
             $('#div-alert-message').fadeIn();
    
         }
@@ -99,8 +99,13 @@ $('#form-editar-funcionario').submit(function (event) {
         success: function (data) {
             location.href = 'listar-funcionarios.html';
         },
-        error: function (xhr, status, error) {
-            alert('Erro ao editar funcionário: ' + error);
+        // error: function (xhr, status, error) {
+        //     alert('Erro ao editar funcionário: ' + error);
+        // }
+        error: function (data) {
+            $('#div-alert-message').html(data.responseText+'<a class="close" onclick="esconderAlert(event)">×</a>');
+            $('#div-alert-message').fadeIn();
+   
         }
     });
 });
