@@ -9,11 +9,6 @@ function GetURLParameter(sParam) {
     }
 }
 
-function esconderAlert() {
-    $('#div-alert-message').html("<a class='close' onclick='esconderAlert()'>×</a>");
-    $('#div-alert-message').hide();
-}
-
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getUTCMonth() + 1),
@@ -26,6 +21,11 @@ function formatDate(date) {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+function acionarEventosBotaoVisualizar() {
+    visualizarFuncionario();
+    esconderAlertBotaoVisualizar();
 }
 
 function visualizarFuncionario() {
@@ -51,17 +51,25 @@ function visualizarFuncionario() {
             $("#input-salario").val(data.salario);
         },
         error: function (data) {
-            $('#div-alert-message').prepend(data.responseText);
+            $('#div-alert-message').html(data.responseText+'<a class="close" onclick="esconderAlertaIcone(event)">×</a>');
             $('#div-alert-message').fadeIn();
+            
         }
     });
 }
 
-// function esconderAlert(event) {
-//     event.stopPropagation();
-//     $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
-//     $('#div-alert-message').hide();
-// }
+function esconderAlertaIcone() {
+    $('#div-alert-message').html("<a class='close' onclick='esconderAlert()'>×</a>");
+    $('#div-alert-message').hide();
+}
+
+function esconderAlertBotaoVisualizar(event) {
+    $(document).ready(function() {
+        $("#button-visualizar").click(function() {
+            $("#div-alert-message").hide();
+        });
+    });
+}
 
 $(document).ready(function () {
     var id_funcionario = GetURLParameter("id");
