@@ -9,6 +9,11 @@ function GetURLParameter(sParam) {
     }
 }
 
+function acionarEventosBotaoEditar() {
+    visualizarFuncionario();
+    esconderAlertaBotaoEditar();
+}
+
 function visualizarFuncionario() {
     var id = $('#input-id').val();
 
@@ -25,17 +30,24 @@ function visualizarFuncionario() {
             preencherCamposFuncionario(data);
         },
         error: function (data) {
-            $('#div-alert-message').html(data.responseText+'<a class="close" onclick="esconderAlert(event)">×</a>');
+            $('#div-alert-message').html(data.responseText+'<a class="close" onclick="esconderAlertaIcone(event)">×</a>');
             $('#div-alert-message').fadeIn();
    
         }
     });
 }
 
-function esconderAlert(event) {
-    event.stopPropagation();
-    $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
+function esconderAlertaIcone() {
+    $('#div-alert-message').html("<a class='close' onclick='esconderAlert()'>×</a>");
     $('#div-alert-message').hide();
+}
+
+function esconderAlertaBotaoEditar(event) {
+    $(document).ready(function() {
+        $("#button-editar").click(function() {
+            $("#div-alert-message").hide();
+        });
+    });
 }
 
 
@@ -99,9 +111,6 @@ $('#form-editar-funcionario').submit(function (event) {
         success: function (data) {
             location.href = 'listar-funcionarios.html';
         },
-        // error: function (xhr, status, error) {
-        //     alert('Erro ao editar funcionário: ' + error);
-        // }
         error: function (data) {
             $('#div-alert-message').html(data.responseText+'<a class="close" onclick="esconderAlert(event)">×</a>');
             $('#div-alert-message').fadeIn();
