@@ -80,5 +80,49 @@ $('#form-inserir-funcionario').submit(function (event) {
 
 $(document).ready(function() {
     $('#input-cpf').mask('000.000.000-00');
+});
+
+// $(document).ready(function() {
+//     var inputNascimento = $('#input-nascimento');
+//     var dataMinima = '1900-01-01';
+//     var dataMaxima = '2200-12-31';
+//     inputNascimento.attr('min', dataMinima);
+//     inputNascimento.attr('max', dataMaxima);
+//   });
+  
+$(document).ready(function() {
+    var inputNascimento = $('#input-nascimento');
+    var dataMinima = '1900-01-01';
+    var dataMaxima = '2200-12-31';
+  
+    inputNascimento.attr('min', dataMinima);
+    inputNascimento.attr('max', dataMaxima);
+  
+    inputNascimento.on('input', function() {
+      var dateValue = $(this).val();
+      var validDate = isValidDate(dateValue);
+  
+      if (validDate) {
+        var year = new Date(dateValue).getFullYear();
+        if (year.toString().length !== 4) {
+          $(this).val('');
+        }
+      }
+    });
+  
+    function isValidDate(dateString) {
+      var regEx = /^\d{4}-\d{2}-\d{2}$/;
+      if (!dateString.match(regEx)) return false; 
+      var d = new Date(dateString);
+      var dNum = d.getTime();
+      if (!dNum && dNum !== 0) return false; 
+      return d.toISOString().slice(0, 10) === dateString && dateString >= dataMinima && dateString <= dataMaxima;
+    }
   });
+
+
+
+
+
+
   
