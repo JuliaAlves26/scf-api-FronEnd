@@ -77,3 +77,8 @@ $('#form-inserir-funcionario').submit(function (event) {
         }
     });
 });
+
+$(document).ready(function() {
+    $('#input-cpf').mask('000.000.000-00');
+  });
+  
