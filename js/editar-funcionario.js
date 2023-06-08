@@ -159,12 +159,14 @@ $(document).ready(function () {
 
 $(document).ready(function() {
     $('#input-cpf').mask('000.000.000-00');
+
+    $('#input-salario').mask("###0.00", {reverse: true});
 });
 
 $(document).ready(function() {
     var inputNascimento = $('#input-nascimento');
     var dataMinima = '1900-01-01';
-    var dataMaxima = '2200-12-31';
+    var dataMaxima = '9999-12-31';
   
     inputNascimento.attr('min', dataMinima);
     inputNascimento.attr('max', dataMaxima);

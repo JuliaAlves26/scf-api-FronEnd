@@ -47,12 +47,6 @@ $('#form-inserir-funcionario').submit(function (event) {
     });
  });
 
-//  function esconderAlert(event) {
-//     event.stopPropagation();
-//     $('#div-alert-message').html("<a class='close' onclick='esconderAlert(event)'>×</a>");
-//     $('#div-alert-message').hide();
-// }
-
 
  $(document).ready(function() {
     var cargosPorDepartamento = {
@@ -80,20 +74,17 @@ $('#form-inserir-funcionario').submit(function (event) {
 
 $(document).ready(function() {
     $('#input-cpf').mask('000.000.000-00');
+
+   
+    $('#input-salario').mask("###0.00", {reverse: true});
+     
 });
 
-// $(document).ready(function() {
-//     var inputNascimento = $('#input-nascimento');
-//     var dataMinima = '1900-01-01';
-//     var dataMaxima = '2200-12-31';
-//     inputNascimento.attr('min', dataMinima);
-//     inputNascimento.attr('max', dataMaxima);
-//   });
   
 $(document).ready(function() {
     var inputNascimento = $('#input-nascimento');
     var dataMinima = '1900-01-01';
-    var dataMaxima = '2200-12-31';
+    var dataMaxima = '9999-12-31';
   
     inputNascimento.attr('min', dataMinima);
     inputNascimento.attr('max', dataMaxima);
@@ -119,6 +110,20 @@ $(document).ready(function() {
       return d.toISOString().slice(0, 10) === dateString && dateString >= dataMinima && dateString <= dataMaxima;
     }
   });
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
 
 
 
