@@ -27,6 +27,9 @@ $('#form-inserir-funcionario').submit(function (event) {
     console.log(JSON.stringify(formData));
 
     $.ajax({
+        beforeSend: function (xhr){ 
+            xhr.setRequestHeader("Authorization", "Basic "+btoa("kate:12345")); 
+        },
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

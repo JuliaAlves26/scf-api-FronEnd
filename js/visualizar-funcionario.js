@@ -37,6 +37,9 @@ function visualizarFuncionario() {
     }
 
     $.ajax({
+        beforeSend: function (xhr){ 
+            xhr.setRequestHeader("Authorization", "Basic "+btoa("kate:12345")); 
+        },
         url: 'http://localhost:8080/api/funcionario/getById/' + id,
         type: 'GET',
         dataType: 'json',

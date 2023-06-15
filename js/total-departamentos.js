@@ -4,6 +4,9 @@ $(document).ready(function() {
   
   function totalDepartamentos() {
     $.ajax({
+      beforeSend: function (xhr){ 
+        xhr.setRequestHeader("Authorization", "Basic "+btoa("kate:12345")); 
+    },
       url: 'http://localhost:8080/api/funcionario/list',
       type: 'GET',
       dataType: 'json',
