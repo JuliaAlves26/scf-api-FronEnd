@@ -32,3 +32,7 @@ function sair() {
     sessionStorage.removeItem("senha");
     location.href = '/login.html';
 }
+
+document.getElementById("login-btn").addEventListener("click", function() {
+    window.location.href = "../funcionario/login.html";
+});
