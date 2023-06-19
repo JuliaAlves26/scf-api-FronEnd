@@ -14,6 +14,7 @@ function acionarEventosBotaoEditar() {
     esconderAlertaBotaoEditar();
 }
 
+
 function visualizarFuncionario() {
     var id = $('#input-id').val();
 

@@ -43,6 +43,9 @@ function removerFuncionario(id) {
     var respostaPergunta = confirm("Confirma a exclusão?");
     if (respostaPergunta == true) {
         $.ajax({
+            beforeSend: function (xhr){ 
+                xhr.setRequestHeader("Authorization", "Basic "+btoa("kate:12345")); 
+            },
             type: 'DELETE',
             url: 'http://localhost:8080/api/funcionario/remove/' + id,
             dataType: 'json',
