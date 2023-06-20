@@ -1,9 +1,12 @@
 $(document).ready(listarFuncionarios);
 
 function listarFuncionarios() {
+    let usuario = sessionStorage.getItem("usuario");
+    let senha = sessionStorage.getItem("senha");
+
     $.ajax({
         beforeSend: function (xhr){ 
-            xhr.setRequestHeader("Authorization", "Basic "+btoa("kate:12345")); 
+            xhr.setRequestHeader("Authorization", "Basic "+btoa(usuario+":"+senha)); 
         },
         url: 'http://localhost:8080/api/funcionario/list',
         type: 'GET',
@@ -42,10 +45,13 @@ function listarFuncionarios() {
 function removerFuncionario(id) {
     var respostaPergunta = confirm("Confirma a exclusão?");
     if (respostaPergunta == true) {
+        let usuario = sessionStorage.getItem("usuario");
+        let senha = sessionStorage.getItem("senha");
+
         $.ajax({
             beforeSend: function (xhr){ 
-                xhr.setRequestHeader("Authorization", "Basic "+btoa("kate:12345")); 
-            },
+                xhr.setRequestHeader("Authorization", "Basic "+btoa(usuario+":"+senha)); 
+        },
             type: 'DELETE',
             url: 'http://localhost:8080/api/funcionario/remove/' + id,
             dataType: 'json',
