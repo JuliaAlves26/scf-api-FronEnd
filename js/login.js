@@ -11,7 +11,7 @@ $('#form-login').submit(function (event) {
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Authorization", "Basic " + btoa(usuario+":"+senha));
         },
-        type: 'GET',
+        type: 'GET',             
         url: 'http://localhost:8080/api/auth/',
         dataType: 'json',
         success: function (data) {
@@ -27,12 +27,13 @@ $('#form-login').submit(function (event) {
     });
 });
 
-function sair() {
-    sessionStorage.removeItem("usuario");
-    sessionStorage.removeItem("senha");
-    location.href = '/login.html';
-}
 
 document.getElementById("login-btn").addEventListener("click", function() {
     window.location.href = "../funcionario/login.html";
 });
+
+function sair() {
+    sessionStorage.removeItem("usuario");
+    sessionStorage.removeItem("senha");
+    location.href = 'login.html';
+}

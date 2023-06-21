@@ -4,6 +4,11 @@ function listarFuncionarios() {
     let usuario = sessionStorage.getItem("usuario");
     let senha = sessionStorage.getItem("senha");
 
+    if ((usuario == null) || (senha == null) || (usuario == undefined) || (senha == undefined)) {
+        alert("Usuário não autenticado");
+        location.href = "/login.html";
+    }
+
     $.ajax({
         beforeSend: function (xhr){ 
             xhr.setRequestHeader("Authorization", "Basic "+btoa(usuario+":"+senha)); 
@@ -45,8 +50,14 @@ function listarFuncionarios() {
 function removerFuncionario(id) {
     var respostaPergunta = confirm("Confirma a exclusão?");
     if (respostaPergunta == true) {
+
         let usuario = sessionStorage.getItem("usuario");
         let senha = sessionStorage.getItem("senha");
+
+        if ((usuario == null) || (senha == null) || (usuario == undefined) || (senha == undefined)) {
+            alert("Usuário não autenticado");
+            location.href = "/login.html";
+        }
 
         $.ajax({
             beforeSend: function (xhr){ 
